@@ -2,12 +2,12 @@ class Api::SessionsController < ApplicationController
   def new
   end
 
-  def create
-    user = User.from_omniauth(auth_hash)
-    user.playlist = Playlist.create
-    session[:user_id] = user.id
-    render json: { user: user, playlist: user.playlist.to_json(include:[:songs, :user])  }
-  end
+  # def create
+  #   user = User.from_omniauth(auth_hash)
+  #   user.playlist = Playlist.create
+  #   session[:user_id] = user.id
+  #   render json: { user: user, playlist: user.playlist.to_json(include:[:songs, :user])  }
+  # end
 
 
 

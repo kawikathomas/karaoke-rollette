@@ -2,7 +2,8 @@ class Api::PlaylistsController < ApplicationController
   # before_action :set_playlist
 
   def index
-    @playlist = Playlist.find(params[current_user[:id]])
+    id = current_user[:id]
+    @playlist = Playlist.find(params[id])
     render json: @playlist.to_json(include: [:songs, :user])
   end
 
