@@ -39,7 +39,6 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :email
       t.integer :party_id
-      t.integer :playlist_id
 
       ## Tokens
       t.json :tokens
