@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope :v1 do
     mount_devise_token_auth_for 'User', at: 'auth', default: {format: "json"}
@@ -8,6 +9,11 @@ Rails.application.routes.draw do
   namespace :api do
     get 'auth/:provider/callback', to: "sessions#create"
     post 'auth/:provider/callback', to: "sessions#create"
+
+    get '/artists', to: 'artists#index'
+    get '/artists/search', to: 'artists#search'
+    get '/artists/:id', to:'artists#show', as: 'artist'
+    post 'songs' => 'songs#create'
 
     resources :party, only: [:show, :create, :destroy, :update, :edit] do
       resources :messages, only: [:create, :index]
