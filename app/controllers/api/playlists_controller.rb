@@ -3,8 +3,7 @@ class Api::PlaylistsController < ApplicationController
   before_action :set_user
 
   def index
-    @playlist = Playlist.find(@user.id)
-    render json: @playlist.to_json(include: [:songs, :user])
+    render json: @user.playlist.to_json(include: [:songs, :user])
   end
 
   def destroy
