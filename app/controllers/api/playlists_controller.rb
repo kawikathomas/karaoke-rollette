@@ -3,8 +3,6 @@ class Api::PlaylistsController < ApplicationController
   before_action :set_user
 
   def index
-    puts request.headers.inspect
-    puts request.headers['uid']
     render json: @user.playlist.to_json(include: [:songs, :user])
   end
 
