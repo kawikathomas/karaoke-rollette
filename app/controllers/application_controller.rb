@@ -4,11 +4,12 @@ class ApplicationController < ActionController::API
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :null_session
   before_filter :parse_request, only: [:create, :update, :delete]
+  before_action :set_user
 
-  def user_playlist(user)
-    @playlist = Playlist.find(find_playlist_id(user)).songs
-    user.playlist.songs
-  end
+  # def user_playlist(user)
+  #   @playlist = Playlist.find(find_playlist_id(user)).songs
+  #   user.playlist.songs
+  # end
 
   def authorize
     # redirect_to '/login' unless current_user
@@ -29,6 +30,9 @@ class ApplicationController < ActionController::API
     @json = JSON.parse(request.body.read)
   end
 
+  def set_user
+    @user = User.find_by(uid: request.headers['uid'])
+  end
 
   # private
   # def current_user
