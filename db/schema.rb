@@ -10,10 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004043323) do
+ActiveRecord::Schema.define(version: 20161004180039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string   "topic"
+    t.integer  "party_id"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "chatroom_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "playlist_songs", force: :cascade do |t|
+    t.integer  "song_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "song_matches", force: :cascade do |t|
+    t.integer  "party_id"
+    t.integer  "song_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "artist"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -22,19 +82,11 @@ ActiveRecord::Schema.define(version: 20161004043323) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,       null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "name"
     t.string   "nickname"
     t.string   "image"
     t.string   "email"
+    t.integer  "party_id"
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
