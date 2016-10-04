@@ -1,5 +1,6 @@
 class Api::PlaylistsController < ApplicationController
   # before_action :set_playlist
+  before_action :set_user
 
   def index
     @playlist = Playlist.find(@user.id)
