@@ -9,9 +9,13 @@ class Api::SongsController < ApplicationController
     if @song.present?
       render nothing: true # no error is rendered
     else
-      @song = Song.new
-      @song.assign_attributes(title: @json['title'], artist: @json['artist'])
-      render json: @song if @song.save
+      song_params = params[:song]
+      @song = Song.create(title: song_params[:title], artist: song_params[:artist_name])
+      PlaylistSong.create(playlist_id: current_user.playlist.id, song_id: @song.id)
+      redirect_to api_artist_path(song_params[:artist_id])
+        # @song = Song.new
+      # @song.assign_attributes(title: @json['title'], artist: @json['artist'])
+      # render json: @song if @song.save
     end
   end
 

@@ -1,0 +1,23 @@
+<h1>Artists#show</h1>
+<p>Find me in app/views/artists/show.html.erb</p>
+
+<h1 class="page-header"><%= @artist.name %></h1>
+<% @artist.albums(country: 'US').each do |album| %>
+ <h3><%= album.name %></h3>
+ <ul>
+    <% album.tracks.each do |track| %>
+      <% @track = track %>
+      <li>
+        <%= @track.name %> |
+
+        <%= form_for :song, url: "/api/songs"  do |f| %>
+        <%= f.hidden_field(:title, :value => @track.name) %>
+        <%= f.hidden_field(:artist_name, :value => @artist.name) %>
+        <%= f.hidden_field(:artist_id, :value => @artist.id) %>
+        <%= f.submit  %>
+        <% end %>
+
+      </li>
+   <% end %>
+ </ul>
+<% end %>

@@ -24,13 +24,13 @@ gem 'dotenv'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 gem 'figaro'
-
+gem 'nokogiri', '1.6.7.2'
 gem 'slim'
 gem 'koala'
 gem 'faker'
 gem 'rack-cors'
 gem 'friendly_id', '~> 5.1.0'
-
+gem 'rspotify'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

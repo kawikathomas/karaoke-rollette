@@ -1,0 +1,22 @@
+<h1>Spotify Search</h1>
+
+<h1 class="page-header">Spotify Demo</h1>
+<%= form_tag api_artists_path, method: "get" do %>
+ <div class="form-group col-xs-4">
+   <%= text_field_tag(:artist_name, "", placeholder: "Enter artist name", class: "form-control") %>
+ </div>
+ <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+<% if current_user.playlist %>
+
+<ul>
+<% current_user.playlist.songs.each do |track| %>
+<li>
+  Title: <%= track.title %> by :<%= track.artist %><br>
+</li>
+<% end %>
+</ul>
+<% end %>
+
