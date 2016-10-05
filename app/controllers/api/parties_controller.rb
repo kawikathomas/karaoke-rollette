@@ -8,7 +8,8 @@ class Api::PartyController < ApplicationController
       render nothing: true
     else
       @user = User.find_by(uid: request.headers['uid'])
-      puts "=====================#{@user.email}===================="
+      puts "=====================#{request.headers['uid']}===================="
+      puts "=====================#{@user}===================="
       @party = Party.new
       if @party.save
         @party.users << @user

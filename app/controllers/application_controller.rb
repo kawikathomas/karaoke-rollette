@@ -40,7 +40,7 @@ class ApplicationController < ActionController::API
 
 def build_queue
   party_queue = []
-  queues = @party.users.playlist.each do |song|
+  queues = @party.users.each do |playlist|
   end
 end
 
