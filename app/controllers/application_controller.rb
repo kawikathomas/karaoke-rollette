@@ -5,8 +5,6 @@ class ApplicationController < ActionController::API
   # protect_from_forgery with: :null_session
   before_action :parse_request, only: [:create, :update, :delete]
   before_action :set_user
-
-
   private
 
   def find_playlist_id(user)
@@ -21,6 +19,9 @@ class ApplicationController < ActionController::API
     @user = User.find_by(uid: request.headers['uid'])
   end
 
+  def set_playlist
+    @playlist = @user.playlist
+  end
   # private
   # def current_user
   #   @current_user ||= User.find(session[:user_id]) if session[:user_id]

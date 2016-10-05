@@ -7,9 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 15.times {
-  user = User.create({
+  user = User.create!({
       name: Faker::Name.name,
       email: Faker::Internet.email,
+      password: "password",
+      password_confirmation: "password",
       # facebook_id:
       # token:
 

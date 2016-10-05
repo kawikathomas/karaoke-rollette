@@ -1,11 +1,13 @@
 class Api::SongsController < ApplicationController
   # before_filter :find_song
+  before_action :set_playlist
 
   def index
     render json: Song.all
   end
 
   def create
+    @playlist ||= Playlist.create(user_id: @user.id)
     if @song.present?
       render nothing: true # no error is rendered
     else

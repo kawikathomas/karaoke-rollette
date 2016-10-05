@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20161004180039) do
   create_table "songs", force: :cascade do |t|
     t.string   "artist"
     t.string   "title"
+    t.string   "image_src"
+    t.integer  "popularity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
