@@ -17,7 +17,6 @@ class Api::PartiesController < ApplicationController
 
     # compare json data with the party user list and find unique key value pairs
     # add them to the list
-  end
 
   def destroy
     @party = Party.find(params[:id])
