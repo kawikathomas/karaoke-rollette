@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
   # protect_from_forgery with: :null_session
   before_action :parse_request, only: [:create, :update, :delete]
   before_action :set_user
+  before_action :configure_permitted_parameters
   private
 
   def find_playlist_id(user)
