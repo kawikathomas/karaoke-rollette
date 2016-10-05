@@ -1,17 +1,15 @@
-class Api::ArtistsController < ApplicationController
+class Api::tracksController < ApplicationController
 
   def index
     puts "#{params.inspect} ==========================================="
 
-    if params[:artist_name]
-       @artists = RSpotify::Artist.search(params[:artist_name])
-       render json: @artists.to_json
-     # else
-     #   redirect_to root_path
+    if params[:track_name]
+       @tracks = RSpotify::Track.search(params[:track_name])
+       render json: @tracks.to_json
     end
   end
 
  def show
-  @artist = RSpotify::Artist.find(params[:id])
+  @track = RSpotify::Track.find(params[:id])
 end
 end
