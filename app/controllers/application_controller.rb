@@ -38,11 +38,11 @@ class ApplicationController < ActionController::API
 
 # build party queue
 
-# def build_queue
-#   party_queue = []
-#   queues = @party.users.playlist.each do |song|
-#   end
-# end
+def build_queue
+  party_queue = []
+  queues = @party.users.playlist.each do |song|
+  end
+end
 
 
   # private
