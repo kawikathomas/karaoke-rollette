@@ -14,8 +14,8 @@ class Api::PartiesController < ApplicationController
     @party = Party.find(params[:id])
     if !@party.users.include?(@user)
       @party.users << @user
+      render json: { party: @party, @party.users.to_json(include:[:users, :playlists]) }
     end
-    render json: { party: @party, @party.to_json(include:[:users, :playlists]) }
   end
 
   def destroy
