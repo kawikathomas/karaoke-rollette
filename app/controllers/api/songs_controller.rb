@@ -9,8 +9,8 @@ class Api::SongsController < ApplicationController
     if @song.present?
       render nothing: true # no error is rendered
     else
-      song_params = params[:song]
-      @song ||= Song.create(title: song_params[:title], artist: song_params[:artist_name])
+      puts "++++++++++++++++++++++#{JSON.parse(request.body.read)}+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+      @song ||= Song.create(title: @json['title'], artist: @json['artist'], image_src: @json['img_src'])
       @playlist_song = PlaylistSong.create(playlist_id: current_user.playlist.id, song_id: @song.id)
       # render :json, {song: @song, playlist_song: @playlist_song}
       render json: @tracks.to_json
