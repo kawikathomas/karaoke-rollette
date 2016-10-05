@@ -1,7 +1,8 @@
 class Api::ArtistsController < ApplicationController
 
   def index
-    puts "is this working"
+    puts "#{params.inspect} ==========================================="
+
     if params[:artist_name]
        @artists = RSpotify::Artist.search(params[:artist_name])
        render :json, {artists: @artists}
