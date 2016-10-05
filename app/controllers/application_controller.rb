@@ -41,7 +41,9 @@ class ApplicationController < ActionController::API
 def build_queue
   party_queue = []
   queues = @party.users.each do |playlist|
+    party_queue << playlist.songs
   end
+
 end
 
 
