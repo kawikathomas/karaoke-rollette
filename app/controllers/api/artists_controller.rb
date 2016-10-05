@@ -1,7 +1,6 @@
 class Api::ArtistsController < ApplicationController
 
   def index
-    puts params "============================================="
     puts "is this working"
     if params[:artist_name]
        @artists = RSpotify::Artist.search(params[:artist_name])
