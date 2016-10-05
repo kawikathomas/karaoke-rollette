@@ -12,7 +12,7 @@ class Api::PartiesController < ApplicationController
   def update
     @party = Party.find(params[:id])
     @party.users << @user
-    render @party.to_json
+    render json: @party.to_json(methods: :token)
   end
 
 
