@@ -12,6 +12,7 @@ class Api::PartiesController < ApplicationController
   def update
     @party = Party.find(params[:id])
     @party << @user
+    render @party.to_json
   end
 
 
