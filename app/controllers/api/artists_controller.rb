@@ -1,4 +1,4 @@
-class Api::tracksController < ApplicationController
+class Api::ArtistsController < ApplicationController
 
   def index
     puts "#{params.inspect} ==========================================="
