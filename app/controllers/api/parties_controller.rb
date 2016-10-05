@@ -7,8 +7,11 @@ class Api::PartyController < ApplicationController
     if @party.present?
       render nothing: true
     else
+      @user = current_user
+      puts "{{{{{{{{{{{{}}}}}}}}}}}}}{{{{{{{{{{{{{{{{#{@user}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{{{{}}}}}}}}}}}"
       @party = Party.new
       if @party.save
+        @user.find
         @party.users << @user
         render json: @party.to_json(methods: :token)
       end
