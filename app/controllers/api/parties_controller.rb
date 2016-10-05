@@ -11,7 +11,6 @@ class Api::PartyController < ApplicationController
       puts "{{{{{{{{{{{{}}}}}}}}}}}}}{{{{{{{{{{{{{{{{#{@user}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{{{{}}}}}}}}}}}"
       @party = Party.new
       if @party.save
-        @user.find
         @party.users << @user
         render json: @party.to_json(methods: :token)
       end
