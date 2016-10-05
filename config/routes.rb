@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get '/artists/:id', to:'artists#show', as: 'artist'
     post 'songs' => 'songs#create'
 
+    get '/games/song', to: 'games#song'
+
     resources :party, only: [:show, :create, :destroy, :update, :edit] do
       resources :messages, only: [:create, :index]
     end

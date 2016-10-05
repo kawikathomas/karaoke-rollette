@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(version: 20161004180039) do
     t.string   "image"
     t.string   "email"
     t.integer  "party_id"
-    t.integer  "playlist_id"
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
