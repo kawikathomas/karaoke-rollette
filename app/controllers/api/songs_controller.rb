@@ -8,9 +8,7 @@ class Api::SongsController < ApplicationController
   end
 
   def create
-      p params
-      p @json['title'] + "this is the title"
-      @song ||= Song.create(title: @json['title'], artist: @json['artist'], image_src: @json['img_src'])
+      @song ||= Song.create(title: @json['title'], artist: @json['artist'], image_src: @json['image_src'])
       puts (@json['title'])
       @playlist ||= Playlist.create(user_id: @user.id)
       @playlist_song = PlaylistSong.create(playlist_id: @playlist.id, song_id: @song.id)
