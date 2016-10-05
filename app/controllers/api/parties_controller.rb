@@ -1,16 +1,13 @@
-class Api::PartyController < ApplicationController
-
-  def new
-  end
+class Api::PartiesController < ApplicationController
+  before_action :set_user
 
   def create
-    if @party.present?
-      render nothing: true
-    else
-      @party = Party.create(name: @json['name'])
-      if @party.save
-        render json: @party.to_json(methods: :token)
-      end
+    puts "user: #{@user}"
+    puts request.headers['uid']
+    @party = Party.new
+    if @party.save
+      @party.users << @user
+      render json: @party.to_json(methods: :token)
     end
   end
 
@@ -20,10 +17,6 @@ class Api::PartyController < ApplicationController
   end
 
   def destroy
-  end
-
-  def set_party
-    @party = User.find_by(name: params[:users]).playlist
   end
 
 end
