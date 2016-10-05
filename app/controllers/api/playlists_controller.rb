@@ -3,6 +3,7 @@ class Api::PlaylistsController < ApplicationController
   before_action :set_user
 
   def index
+    # playlist = @user.playlist.playlist_songs.order('created_at DESC')
     render json: @user.playlist.to_json(include: [:songs, :user])
   end
 
@@ -10,9 +11,5 @@ class Api::PlaylistsController < ApplicationController
     # User cannot destroy their playlist, they can only delete songs and empty playlist
   end
 
-  private
-  def set_playlist
-    @playlist = user_playlist(current_user)
-  end
 
 end

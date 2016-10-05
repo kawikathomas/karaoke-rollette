@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   def create
+      @playlist ||= Playlist.create(user_id: @user.id)
       @song = Song.new(params)
 
       respond_to do |format|
