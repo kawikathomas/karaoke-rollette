@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
     get '/games/song', to: 'games#song'
 
+    post '/song_matches' => 'song_matches#create'
+    delete '/song_matches/:id' => 'song_match#destroy'
+
     resources :parties, only: [:show, :create, :destroy, :update, :edit] do
       resources :messages, only: [:create, :index]
     end

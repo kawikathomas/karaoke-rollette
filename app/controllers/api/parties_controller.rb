@@ -11,7 +11,7 @@ class Api::PartiesController < ApplicationController
 
   def update
     @party = Party.find(params[:id])
-    @party << @user
+    @party.users << @user
     render @party.to_json
   end
 
