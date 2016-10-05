@@ -9,7 +9,7 @@ class Api::PartyController < ApplicationController
     else
       @party = Party.new
       if @party.save
-        @party.users << current_user
+        @party.users << @user
         render json: @party.to_json(methods: :token)
       end
     end
