@@ -12,7 +12,6 @@ class Api::SongsController < ApplicationController
       puts (@json['title'])
       @playlist ||= Playlist.create(user_id: @user.id)
       @playlist_song = PlaylistSong.create(playlist_id: @playlist.id, song_id: @song.id)
-      render json: "AT SONG"
   end
 
   private
