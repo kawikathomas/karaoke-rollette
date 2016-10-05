@@ -7,7 +7,7 @@ class Api::PartyController < ApplicationController
     if @party.present?
       render nothing: true
     else
-      @party = Party.create(name: @json['name'])
+      @party = Party.new
       if @party.save
         @party.users << current_user
         render json: @party.to_json(methods: :token)
