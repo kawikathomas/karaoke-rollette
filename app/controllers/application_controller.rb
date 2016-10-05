@@ -34,6 +34,16 @@ class ApplicationController < ActionController::API
     @user = User.find_by(uid: request.headers['uid'])
   end
 
+
+
+# build party queue
+
+def build_queue
+  party_queue = []
+  queues = @party.users.playlist.each do |song|
+end
+
+
   # private
   # def current_user
   #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
