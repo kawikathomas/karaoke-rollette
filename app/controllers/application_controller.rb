@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   # protect_from_forgery with: :null_session
   before_action :parse_request, only: [:create, :update, :delete]
   before_action :set_user
-  before_action :configure_permitted_parameters
+  before_action :configure_permitted_parameters, if: :devise_controller?
   private
 
   def find_playlist_id(user)
@@ -27,7 +27,8 @@ class ApplicationController < ActionController::API
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email, :name, :password, :password_confirmation)}
+    puts "Hitting the correct controller"
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name])
   end
 
 end
