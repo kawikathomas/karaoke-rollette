@@ -9,7 +9,7 @@ class Api::PartyController < ApplicationController
     else
       @user = User.find_by(uid: request.headers['uid'])
       puts "================ #{params} ========================"
-      puts "=====================#{request}===================="
+      puts "=====================#{request.inspect}===================="
       puts "=====================#{@user}===================="
       @party = Party.new
       if @party.save
