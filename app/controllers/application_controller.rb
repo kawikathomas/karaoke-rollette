@@ -27,7 +27,6 @@ class ApplicationController < ActionController::API
   protected
 
   def configure_permitted_parameters
-    puts "Hitting the correct controller"
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name])
   end
 
