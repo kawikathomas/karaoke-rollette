@@ -9,7 +9,8 @@ class Api::ArtistsController < ApplicationController
     end
   end
 
- def show
-  @track = RSpotify::Track.find(params[:id])
-end
+  def show
+    @track = RSpotify::Track.find(params[:id])
+  end
+
 end
