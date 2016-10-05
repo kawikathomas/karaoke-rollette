@@ -23,15 +23,5 @@ class ApplicationController < ActionController::API
     @playlist = @user.playlist
   end
 
-  # build party queue
-  def build_queue
-    party_queue = []
-    queues = @party.playlists.each do |playlist|
-      playlist.songs.each do |song|
-        party_queue << song
-      end
-    end
-    party_queue
-  end
 
 end

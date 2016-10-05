@@ -8,4 +8,15 @@ class Party < ApplicationRecord
     Array.new(5) { charset.sample }.join
   end
 
+ # build party queue
+  def build_playlist
+    party_queue = []
+    queues = playlists.each do |playlist|
+      playlist.songs.each do |song|
+        party_queue << song
+      end
+    end
+    party_queue
+  end
+
 end
