@@ -1,11 +1,9 @@
 class GamesController < ApplicationController
 
   def song
-
-
-    songs = @user.playlist.songs
-    index = rand(0..songs.length)
-    @song = songs[index]
+    party_playlist = @party.build_playlist
+    index = rand(0..party_playlist.length)
+    @song = party_playlist[index]
     render @song.to_json
   end
 
