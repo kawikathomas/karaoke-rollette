@@ -38,18 +38,13 @@ class ApplicationController < ActionController::API
 
 # build party queue
 
-def build_queue
-  party_queue = []
-  queues = @party.users.each do |playlist|
-    party_queue << playlist.songs
+  def build_queue
+    party_queue = []
+    queues = @party.users.each do |playlist|
+      party_queue << playlist.songs
+    end
+
   end
 
-end
 
-
-  # private
-  # def current_user
-  #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  # end
-  # helper_method :current_user
 end

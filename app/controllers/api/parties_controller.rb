@@ -2,10 +2,8 @@ class Api::PartiesController < ApplicationController
   before_action :set_user
 
   def create
-    @user = User.find_by(uid: request.headers['uid'])
-    puts "================ #{params} ========================"
-    puts "=====================#{request.inspect}===================="
-    puts "=====================#{@user}===================="
+    puts "user: #{@user}"
+    puts request.headers['uid']
     @party = Party.new
     if @party.save
       @party.users << @user
