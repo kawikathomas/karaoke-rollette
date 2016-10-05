@@ -1,5 +1,5 @@
 class Api::PartyController < ApplicationController
-
+  before_action :set_user
   def new
   end
 
@@ -7,7 +7,6 @@ class Api::PartyController < ApplicationController
     if @party.present?
       render nothing: true
     else
-      @user = current_user
       puts "{{{{{{{{{{{{}}}}}}}}}}}}}{{{{{{{{{{{{{{{{#{@user}}}}}}}}}}}}}}}}}}}{{{{{{{{{{{{{{{{{}}}}}}}}}}}"
       @party = Party.new
       if @party.save
