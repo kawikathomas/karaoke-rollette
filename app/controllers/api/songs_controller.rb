@@ -8,14 +8,9 @@ class Api::SongsController < ApplicationController
   end
 
   def create
-    @playlist ||= Playlist.create(user_id: @user.id)
-    if @song.present?
-      render nothing: true # no error is rendered
-    else
-      puts "++++++++++++++++++++++#{JSON.parse(request.body.read)}+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
       @song ||= Song.create(title: @json['title'], artist: @json['artist'], image_src: @json['img_src'])
+      @playlist ||= Playlist.create(user_id: @user.id)
       @playlist_song = PlaylistSong.create(playlist_id: @playlist.id, song_id: @song.id)
-    end
   end
 
   private
