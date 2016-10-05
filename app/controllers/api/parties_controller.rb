@@ -2,8 +2,6 @@ class Api::PartiesController < ApplicationController
   before_action :set_user
 
   def create
-    puts "user: #{@user}"
-    puts request.headers['uid']
     @party = Party.new
     if @party.save
       @party.users << @user
