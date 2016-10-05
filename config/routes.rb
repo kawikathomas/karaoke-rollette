@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     get '/games/song', to: 'games#song'
 
-    resources :party, only: [:show, :create, :destroy, :update, :edit] do
+    resources :parties, only: [:show, :create, :destroy, :update, :edit] do
       resources :messages, only: [:create, :index]
     end
     resources :songs, only: [:create, :index]
