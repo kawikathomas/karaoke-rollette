@@ -8,10 +8,14 @@ class Api::SongsController < ApplicationController
   end
 
   def create
-    @playlist ||= Playlist.find_or_create_by(user_id: @user.id)
+    @playlist ||= Playlist.create(user_id: @user.id)
+    if @song.present?
+      render nothing: true # no error is rendered
+    else
       puts "++++++++++++++++++++++#{JSON.parse(request.body.read)}+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-      @song ||= Song.find_or_create_by(title: @json['title'], artist: @json['artist'], image_src: @json['img_src'])
-      @playlist_song = PlaylistSong.find_or_create_by(playlist_id: @playlist.id, song_id: @song.id)
+      @song ||= Song.create(title: @json['title'], artist: @json['artist'], image_src: @json['img_src'])
+      @playlist_song = PlaylistSong.create(playlist_id: @playlist.id, song_id: @song.id)
+    end
   end
 
   private
