@@ -5,7 +5,7 @@ class Api::ArtistsController < ApplicationController
 
     if params[:artist_name]
        @artists = RSpotify::Artist.search(params[:artist_name])
-       render :json, {artists: @artists}
+       render json: @artists.to_json
      # else
      #   redirect_to root_path
     end
