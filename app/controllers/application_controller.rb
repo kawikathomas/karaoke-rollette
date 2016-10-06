@@ -6,6 +6,7 @@ class ApplicationController < ActionController::API
   before_action :parse_request, only: [:create, :update, :delete]
   before_action :set_user
   before_action :configure_permitted_parameters, if: :devise_controller?
+
   private
 
   def find_playlist_id(user)
@@ -22,6 +23,18 @@ class ApplicationController < ActionController::API
 
   def set_playlist
     @playlist = @user.playlist
+  end
+
+  def random_song_id
+    party_playlist = @party.build_playlist
+    index = rand(0..party_playlist.length)
+    @song = party_playlist[index]
+  end
+
+  def random_singer_id
+    game_players = @party.users
+    index = rand(0..game_players.length)
+    @singer = game_players[index]
   end
 
   protected

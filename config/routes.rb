@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     get '/artists/search', to: 'artists#search'
     get '/artists/:id', to:'artists#show', as: 'artist'
 
+    get '/parties/party_data' => 'parties#party_data'
+
+    post '/song_matches' => 'song_matches#create'
+    delete '/song_matches/:id' => 'song_match#destroy'
+
     resources :parties, only: [:show, :create, :destroy, :update, :edit] do
       resources :messages, only: [:create, :index]
     end
