@@ -10,10 +10,10 @@ class Api::SongMatchesController < ApplicationController
   end
 
   def matches_data
-    # @user = User.find(@user.id)
-    # render json: @user.as_json(include: [:party, :song_matches, playlist: {include: :songs}])
-    @song_matches = SongMatch.where(party_id: @user.party.id)
-    render json: @song_matches.as_json(include: [:users, :songs, :party])
+    @user = User.find(@user.id)
+    render json: @user.party.as_json(include: [:party, :song_matches, {include: [:song, :user]} ])
+    # @song_matches = SongMatch.where(party_id: @user.party.id)
+    # render json: @song_matches.as_json(include: [:users, playlists: {include: :songs}])
   end
 
   def destroy
