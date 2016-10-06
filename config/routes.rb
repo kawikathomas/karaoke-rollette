@@ -18,7 +18,9 @@ Rails.application.routes.draw do
       resources :messages, only: [:create, :index]
     end
     resources :songs, only: [:create, :index]
-    resources :playlists, only: [:index, :destroy]
+    resources :playlists, only: [:index]
+    resources :playlist_songs, only: [:destroy]
+
     # scope ':username' do
     #   # patch '/playlist/:id', to: 'playlist_songs#update'
     #   delete '/playlist/:id', to: 'playlist_songs#destroy'
