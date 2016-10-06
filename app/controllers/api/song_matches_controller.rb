@@ -1,7 +1,7 @@
 class Api::SongMatchesController < ApplicationController
 
-  before_action :random_song_id
-  before_action :random_singer_id
+  before_action :random_song
+  before_action :random_singer
 
   def create
     @singer = random_singer
