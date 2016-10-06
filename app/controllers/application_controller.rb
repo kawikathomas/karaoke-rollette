@@ -26,13 +26,13 @@ class ApplicationController < ActionController::API
   end
 
   def random_song_id
-    party_playlist = @party.build_playlist
+    party_playlist = @user.party.build_playlist
     index = rand(0..party_playlist.length)
     @song = party_playlist[index]
   end
 
   def random_singer_id
-    game_players = @party.users
+    game_players = @user.party.users
     index = rand(0..game_players.length)
     @singer = game_players[index]
   end
