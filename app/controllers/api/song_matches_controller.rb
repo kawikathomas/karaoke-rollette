@@ -11,7 +11,8 @@ class Api::SongMatchesController < ApplicationController
 
   def matches_data
     @user = User.find(@user.id)
-    render json: @user.party.as_json(include: [:song_matches, {include: [:song, :user]} ])
+    render json: @user.party.as_json(include: [song_matches: {include: [:song, :user, :party]}])
+
     # @song_matches = SongMatch.where(party_id: @user.party.id)
     # render json: @song_matches.as_json(include: [:users, playlists: {include: :songs}])
   end
