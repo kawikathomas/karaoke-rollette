@@ -19,7 +19,7 @@ class Api::PartiesController < ApplicationController
   end
 
   def players_data
-    @players = Users.where(party_id: @user.party.id)
+    @players = User.where(party_id: @user.party.id)
     render json: @players.as_json
   end
 
