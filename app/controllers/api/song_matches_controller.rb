@@ -20,6 +20,7 @@ class Api::SongMatchesController < ApplicationController
 
   def destroy
     # song id?
+    puts "user id: #{@user.id}  =============  song id: #{@song.id} ==================== user id: #{@user.party.id}"
     @song_match = SongMatch.find_by(user_id: @user.id, song_id: @song.id, party_id: @user.party.id)
     @song_match.destroy
   end
