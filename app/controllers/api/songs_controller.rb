@@ -12,6 +12,12 @@ class Api::SongsController < ApplicationController
       puts (@json['title'])
       @playlist ||= Playlist.create(user_id: @user.id)
       @playlist_song = PlaylistSong.create(playlist_id: @playlist.id, song_id: @song.id)
+    end
+  end
+
+  def destroy
+    @song = Song.find(params[:id])
+    @song.destroy
   end
 
   private

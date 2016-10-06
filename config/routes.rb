@@ -13,14 +13,11 @@ Rails.application.routes.draw do
     get '/artists', to: 'artists#index'
     get '/artists/search', to: 'artists#search'
     get '/artists/:id', to:'artists#show', as: 'artist'
-    post 'songs' => 'songs#create'
-
-    get '/games/song', to: 'games#song'
 
     resources :parties, only: [:show, :create, :destroy, :update, :edit] do
       resources :messages, only: [:create, :index]
     end
-    resources :songs, only: [:create, :index]
+    resources :songs, only: [:create, :index, :destroy]
     resources :playlists, only: [:index]
     scope ':username' do
       # patch '/playlist/:id', to: 'playlist_songs#update'
