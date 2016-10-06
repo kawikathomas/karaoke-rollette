@@ -18,6 +18,7 @@ class ApplicationController < ActionController::API
   end
 
   def set_user
+    puts request.headers["uid"]
     @user = User.find_by(uid: request.headers['uid'])
   end
 
