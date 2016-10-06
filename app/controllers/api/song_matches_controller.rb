@@ -21,14 +21,13 @@ class Api::SongMatchesController < ApplicationController
   def destroy
     # song id?
     @song_match = SongMatch.find_by(user_id: @user.id, song_id: params[:id], party_id: @user.party.id)
-    puts "user id: #{@song_match.user}  ============= "
-    # @song_match.user.party.id = nil
-    puts "user id: #{@song_match.user}  ============= "
-    puts "party id: #{@song_match.user.party.id}  ============= "
-    # @song_match.user_id = nil
+    @song_match.song.id = nil
     puts "song id: #{@song_match.song.id}  ============= "
-    @song_match.destroy
-    # @song_match.song.id = nil
+    @song_match.user.party.id = nil
+    puts "party id: #{@song_match.user.party.id}  ============= "
+    @song_match.user_id = nil
+    puts "user id: #{@song_match.user.id}  ============= "
+    # @song_match.destroy
   end
 
 end
