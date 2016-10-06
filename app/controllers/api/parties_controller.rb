@@ -5,7 +5,6 @@ class Api::PartiesController < ApplicationController
     @party = Party.new
     if @party.save
       @party.users << @user
-      # render json: { user: @user, playlist: @user.playlist.to_json(include:[:songs, :user])  }
       render json: @party.to_json(methods: :token)
     end
   end
@@ -18,6 +17,16 @@ class Api::PartiesController < ApplicationController
     end
   end
 
+  def remove_player
+    @party = @user.party
+    @party.users.delete(User.find(@user.id))
+    @user.party_id = nil
+  end
+
+  def players_data
+    @players = User.where(party_id: @user.party.id)
+    render json: @players.as_json
+  end
 
   def destroy
     @party = Party.find(params[:id])

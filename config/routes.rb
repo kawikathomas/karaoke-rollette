@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     get '/artists/search', to: 'artists#search'
     get '/artists/:id', to:'artists#show', as: 'artist'
 
-    get '/parties/party_data' => 'parties#party_data'
+    get '/parties/players_data' => 'parties#players_data'
+    put '/parties/remove_player' => 'parties#remove_player'
 
     post '/song_matches' => 'song_matches#create'
     get '/song_matches' => 'song_matches#matches_data'
