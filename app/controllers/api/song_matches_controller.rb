@@ -1,4 +1,4 @@
-class Api::SongMatchesController < ApplicationController
+class Api::SongMatchController < ApplicationController
 
   before_action :random_song
   before_action :random_singer
@@ -8,6 +8,7 @@ class Api::SongMatchesController < ApplicationController
     @random_song = random_song
     @song_match = SongMatch.new(user_id: @singer.id, singer_name: @singer.name, song_title: @random_song.title, song_artist: @random_song.artist, song_id: @random_song.id, party_id: @user.party.id)
     @song_match.save
+    # check to_json if not getting correct data
     render json: @song_match.to_json
   end
 
