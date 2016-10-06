@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get '/parties/party_data' => 'parties#party_data'
 
     post '/song_matches' => 'song_matches#create'
+    get '/song_matches' => 'song_matches#matches_data'
     delete '/song_matches/:id' => 'song_match#destroy'
 
     resources :parties, only: [:show, :create, :destroy, :update, :edit] do
