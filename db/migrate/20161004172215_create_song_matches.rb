@@ -1,4 +1,4 @@
-class CreateSongMatch < ActiveRecord::Migration[5.0]
+class CreateSongMatches < ActiveRecord::Migration[5.0]
   def change
     create_table :song_matches do |t|
       t.integer :party_id
