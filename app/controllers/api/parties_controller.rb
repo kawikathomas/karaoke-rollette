@@ -18,12 +18,9 @@ class Api::PartiesController < ApplicationController
   end
 
   def remove_player
-    puts "user.party_id : #{@user.party_id} =============================="
     @party = @user.party
-    puts "@party.users : #{@party.users} =============================="
     @party.users.delete(User.find(@user.id))
     @user.party_id = nil
-    puts "user.party_id : #{@user.party_id} =============================="
   end
 
   def players_data
