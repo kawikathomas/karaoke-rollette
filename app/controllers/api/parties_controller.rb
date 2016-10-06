@@ -18,6 +18,10 @@ class Api::PartiesController < ApplicationController
     end
   end
 
+  def players_data
+    @players = Users.where(party_id: @user.party.id)
+    render json: @players.as_json
+  end
 
   def destroy
     @party = Party.find(params[:id])

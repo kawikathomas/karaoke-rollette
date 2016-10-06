@@ -14,21 +14,11 @@ class Api::SongMatchesController < ApplicationController
 
   def matches_data
     @song_matches = SongMatch.where(party_id: @user.party.id)
-    # render json: @user.party.as_json(include: [song_matches: {include: [:song, :user, :party]}])
     render json: @song_matches.as_json
   end
 
   def destroy
-    # song id?
     @song_match = SongMatch.find_by(user_id: @user.id, song_id: params[:id], party_id: @user.party.id)
-    # @song_match.song.id = nil
-    # @song_match.save
-    puts "song id: #{@song_match.song.id}  ============= "
-    # @song_match.user.party.id = nil
-    # @song_match.save
-    puts "party id: #{@song_match.user.party.id}  ============= "
-    # @song_match.user_id = nil
-    # @song_match.save
     @song_match.destroy
   end
 
