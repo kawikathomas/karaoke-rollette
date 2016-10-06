@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
   # protect_from_forgery with: :null_session
   before_action :parse_request, only: [:create, :update, :delete]
   before_action :set_user
+  before_action :configure_permitted_parameters, if: :devise_controller?
   private
 
   def find_playlist_id(user)
@@ -23,15 +24,10 @@ class ApplicationController < ActionController::API
     @playlist = @user.playlist
   end
 
-  # build party queue
-  def build_queue
-    party_queue = []
-    queues = @party.playlists.each do |playlist|
-      playlist.songs.each do |song|
-        party_queue << song
-      end
-    end
-    party_queue
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name])
   end
 
 end
