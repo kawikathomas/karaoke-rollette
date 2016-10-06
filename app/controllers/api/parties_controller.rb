@@ -21,8 +21,7 @@ class Api::PartiesController < ApplicationController
     puts "user.party_id : #{@user.party_id} =============================="
     @party = @user.party
     puts "@party.users : #{@party.users} =============================="
-    i = @party.users.index(@user.id)
-    @party.delete(i)
+    @party.users.delete(User.find(@user.id))
     @user.party_id = nil
     puts "user.party_id : #{@user.party_id} =============================="
   end
