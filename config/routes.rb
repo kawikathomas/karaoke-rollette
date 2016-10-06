@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     get '/games/song', to: 'games#song'
 
-    get '/parties/party_data' => 'parties#party_data'
+    get '/parties/:id/party_data' => 'parties#party_data'
 
     post '/song_matches' => 'song_matches#create'
     delete '/song_matches/:id' => 'song_match#destroy'
