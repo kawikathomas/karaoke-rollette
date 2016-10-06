@@ -11,4 +11,5 @@ script:
   - bundle exec rake
 
 before_script:
-  - psql -c 'create database karaoke-rollette' -U postgres
+  - psql -c 'create database strano_test' -U postgres
+
