@@ -26,7 +26,6 @@ class Api::SongMatchesController < ApplicationController
     @song_match.user.party.id = nil
     puts "party id: #{@song_match.user.party.id}  ============= "
     @song_match.user_id = nil
-    puts "user id: #{@song_match.user.id}  ============= "
     # @song_match.destroy
   end
 
