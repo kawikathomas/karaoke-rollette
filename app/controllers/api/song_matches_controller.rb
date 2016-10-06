@@ -1,4 +1,4 @@
-class Api::SongMatchController < ApplicationController
+class Api::SongMatchesController < ApplicationController
 
   before_action :random_song
   before_action :random_singer
