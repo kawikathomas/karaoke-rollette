@@ -22,7 +22,9 @@ class Api::SongMatchesController < ApplicationController
     # song id?
     puts "user id: #{@user.id}  =============  song id: #{@song.id} ==================== user id: #{@user.party.id}"
     @song_match = SongMatch.find_by(user_id: @user.id, song_id: @song.id, party_id: @user.party.id)
-    @song_match.destroy
+    @song_match.user_id = nil
+    @@song_match.song.id = nil
+    @song_match.user.party.id = nil
   end
 
 end
