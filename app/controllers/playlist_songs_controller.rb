@@ -1,5 +1,6 @@
 class PlaylistSongsController < ApplicationController
   before_action :find_playlist_song, only: [:create, :update]
+  before_action :set_user
 
   def new
     @playlistSong = PlaylistSong.new
@@ -20,7 +21,8 @@ class PlaylistSongsController < ApplicationController
   end
 
   def destroy
-    @playlistSong = PlaylistSong.find_by(params)
+    @playlistsong = PlaylistSong.find_by(song_id: params[:id], playlist_id: @user.playlist.id)
+    @playlistsong.destroy
   end
 
   def find_playlist_song
