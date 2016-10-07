@@ -20,6 +20,7 @@ class Api::SongMatchesController < ApplicationController
   def destroy
     @song_match = SongMatch.find_by(user_id: @user.id, song_id: params[:id], party_id: @user.party.id)
     @song_match.destroy
+    render json: @user.as_json
   end
 
 end
